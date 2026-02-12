@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIXPOINT BOOKING - ระบบจองห้องออนไลน์</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold-primary: #c5a059;
+            --gold-dark: #a67c37;
+            --gold-light: #e5d5b7;
+        }
+
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #fcfaf5; /* พื้นหลังสีครีมอ่อน สบายตา */
+        }
+
+        .step-hidden { display: none; }
+
+        /* ไล่เฉดสีทองหรูหรา */
+        .bg-gold-gradient {
+            background: linear-gradient(135deg, #d4af37 0%, #a67c37 100%);
+        }
+
+        /* ตกแต่งปุ่มเลือกตึก */
+        .building-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.25rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 1rem;
+            background: white;
+            font-weight: 500;
+            color: #4b5563;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .building-btn:hover {
+            border-color: var(--gold-primary);
+            background-color: #fffcf5;
+            color: var(--gold-dark);
+            transform: scale(1.02);
+            box-shadow: 0 10px 15px -3px rgba(166, 124, 55, 0.1);
+        }
+
+        /* ช่อง Input */
+        .input-field {
+            width: 100%;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 0.75rem;
+            background-color: #fff;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .input-field:focus {
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.15);
+        }
+
+        /* ปุ่มยืนยันสีทอง */
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #d4af37 0%, #a67c37 100%);
+            color: white;
+            font-weight: 600;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 12px rgba(166, 124, 55, 0.3);
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            filter: brightness(1.1);
+            box-shadow: 0 6px 20px rgba(166, 124, 55, 0.4);
+            transform: translateY(-1px);
+        }
+        .btn-back{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.btn-back {
+    display: inline-block;
+    padding: 11px 22px;
+    background-color: #e5d5b7;  /* สีเทาเข้ม */
+    color: #8a6d3b;
+    text-decoration: none;     /* ลบเส้นใต้ลิงก์ */
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 300;
+    transition: all 0.3s ease;
+}
+.btn-back:hover {
+    background-color: #d8c49d;
+    transform: translateY(-2px); /* เอฟเฟกต์ลอยขึ้นเมื่อชี้ */
+}
+    </style>
+</head>
+<body>
+
+    <div class="min-h-screen flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
+
+            <div class="bg-gold-gradient p-8 text-white text-center">
+                <h1 class="text-2xl font-bold tracking-wider">FIXPOINT BOOKING</h1>
+                <p class="text-yellow-100 text-sm font-light opacity-90 italic"> Room Selection Service</p>
+            </div>
+
+            <div id="step1" class="p-8">
+    <h2 class="text-lg font-semibold mb-6 text-gray-700 text-center">กรุณาเลือกอาคารที่ท่านต้องการ</h2>
+    <div class="grid gap-4">
+        <button onclick="selectBuilding('CB')" class="building-btn group">
+            <span>อาคาร CB</span>
+            <span class="text-gold-primary opacity-0 group-hover:opacity-100 transition-opacity">เลือก →</span>
+        </button>
+        <button onclick="selectBuilding('EAT')" class="building-btn group">
+            <span>อาคาร EAT</span>
+            <span class="text-gold-primary opacity-0 group-hover:opacity-100 transition-opacity">เลือก →</span>
+        </button>
+        <button onclick="selectBuilding('SCI')" class="building-btn group">
+            <span>อาคาร SCI</span>
+            <span class="text-gold-primary opacity-0 group-hover:opacity-100 transition-opacity">เลือก →</span>
+        </button>
+        <button onclick="selectBuilding('BA')" class="building-btn group">
+            <span>อาคาร BA</span>
+            <span class="text-gold-primary opacity-0 group-hover:opacity-100 transition-opacity">เลือก →</span>
+        </button>
+    </div>
+
+    <div class="mt-6">
+        <button type="button" class="btn-back w-full" onclick="location.href='index.html'">Back</button>
+    </div>
+</div>
+
+
+
+
+            <div id="step2" class="step-hidden p-8">
+                <button onclick="goBack()" class="text-sm text-gold-dark mb-6 flex items-center hover:underline">
+                    <span>← กลับไปเลือกอาคาร</span>
+                </button>
+
+                <div class="mb-6 border-l-4 border-gold-primary pl-4">
+                    <span class="text-xs uppercase tracking-tighter text-gray-400">อาคารที่เลือก</span>
+                    <h2 id="displayBuilding" class="text-2xl font-bold text-gray-800">ตึก</h2>
+                </div>
+
+                <form action="https://formspree.io/f/mdalkeok" method="POST" class="space-y-5">
+                    <input type="hidden" name="ตึกที่เลือก" id="inputBuilding">
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-600 mb-2">Choose the Room</label>
+                        <select name="ห้อง" id="roomSelect" required class="input-field cursor-pointer">
+                            <option value="">-- กรุณาเลือกห้อง --</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-600 mb-2">วันที่ต้องการเข้าใช้งาน</label>
+                        <input type="date" name="วันที่" required class="input-field">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-600 mb-2">เวลาเริ่ม</label>
+                            <input type="time" name="เริ่มเวลา" required class="input-field">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-600 mb-2">เวลาสิ้นสุด</label>
+                            <input type="time" name="สิ้นสุดเวลา" required class="input-field">
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <button type="submit" class="submit-btn">
+                            ยืนยันและจองห้องทันที
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // ข้อมูลห้องแยกตึกละ 20 ห้อง
+        const roomData = {
+            'CB': [
+                'CB-201', 'CB-202', 'CB-203', 'CB-204', 'CB-205',
+                'CB-206', 'CB-207', 'CB-208', 'CB-209', 'CB-210',
+                'CB-211', 'CB-301', 'CB-302', 'CB-303', 'CB-304', 
+                'CB-305', 'CB-306', 'CB-307', 'CB-308', 'CB-308', 
+                'CB-309', 'CB-311', 'CB-401', 'CB-402', 'CB-403', 
+                'CB-404', 'CB-405', 'CB-406', 'CB-407', 'CB-408',
+                'CB-409', 'CB-410', 'CB-411', 'CB-501', 'CB-502',
+                'CB-503'
+            ],
+            'EAT': [
+                'EAT-51-11', 'EAT-51-12', 'EAT-51-13', 'EAT-51-14', 
+                'EAT-51-21', 'EAT-51-22', 'EAT-51-23', 'EAT-51-24', 
+                'EAT-51-31', 'EAT-51-32', 'EAT-51-33', 'EAT-51-34',  
+                'EAT-51-41', 'EAT-51-42', 'EAT-51-43', 'EAT-51-44', 
+                'EAT-51-51', 'EAT-51-52', 'EAT-51-53', 'EAT-51-54', 
+                'EAT-51-61', 'EAT-51-62', 'EAT-51-63', 'EAT-51-64', 
+                'EAT-51-71', 'EAT-51-72', 'EAT-51-73', 'EAT-51-74', 
+            ],
+            'SCI': [
+                'SCI-53-101', 'SCI-53-102', 'SCI-53-103', 'SCI-53-104', 
+                'SCI-53-201', 'SCI-53-202', 'SCI-53-203', 'SCI-53-204', 
+                'SCI-53-301', 'SCI-53-302', 'SCI-53-303', 'SCI-53-304',  
+                'SCI-53-401', 'SCI-53-402', 'SCI-53-403', 'SCI-53-404', 
+                'SCI-53-503', 'SCI-53-502', 'SCI-53-503', 'SCI-53-504', 
+                'SCI-53-601', 'SCI-53-602', 'SCI-53-603', 'SCI-53-604', 
+                'SCI-53-701', 'SCI-53-702', 'SCI-53-703', 'SCI-53-704', 
+            ],
+            'BA': [
+                'BA-201', 'BA-202', 'BA-203', 'BA-204', 'BA-205',
+                'BA-206', 'BA-207', 'BA-208', 'BA-209', 'BA-210',
+                'BA-211',
+                'BA-301', 'BA-302', 'BA- 303-304', 'BA-305',
+                'BA-306', 'BA-307', 
+                'BA-401', 'BA-402', 'BA-403', 'BA-404', 'BA-405',
+                'BA-406','BA-407',
+                'BA-501', 'BA-502', 'BA-503', 'BA-504', 'BA-505',
+                'BA-506','BA-507',
+                'BA-601', 'BA-602', 'BA-603', 'BA-604', 'BA-605',
+                'BA-606', 'BA-607', 'BA-608', 'BA-609', 'BA-610',
+                'BA-611', 
+                'BA-701', 'BA-702', 'BA-703', 'BA-704', 'BA-705',
+                'BA-706', 'BA-707', 'BA-708', 'BA-709', 'BA-710',
+                'BA-711',  
+                
+            ]
+        };
+
+        function selectBuilding(name) {
+            const step1 = document.getElementById('step1');
+            const step2 = document.getElementById('step2');
+            const displayBuilding = document.getElementById('displayBuilding');
+            const inputBuilding = document.getElementById('inputBuilding');
+            const roomSelect = document.getElementById('roomSelect');
+
+            // สลับหน้าด้วยคลาส
+            step1.classList.add('step-hidden');
+            step2.classList.remove('step-hidden');
+
+            // อัปเดตหัวข้อและข้อมูลส่งฟอร์ม
+            displayBuilding.innerText = "อาคาร " + name;
+            inputBuilding.value = name;
+
+            // ล้างค่าเดิมใน Select
+            roomSelect.innerHTML = '<option value="">-- กรุณาเลือกห้อง --</option>';
+
+            // เติมห้องใหม่ 20 ห้องตามตึกที่เลือก
+            if (roomData[name]) {
+                roomData[name].forEach(room => {
+                    const option = document.createElement('option');
+                    option.value = room;
+                    option.textContent = room;
+                    roomSelect.appendChild(option);
+                });
+            }
+        }
+
+        function goBack() {
+            document.getElementById('step1').classList.remove('step-hidden');
+            document.getElementById('step2').classList.add('step-hidden');
+        }
+    </script>
+</body>
+</html>

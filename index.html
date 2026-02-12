@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIXPOINTConnect - FIXPOINT Services </title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo" onclick="showPage('home')">FIXPOINT<span>Services</span></div>
+            <div class="nav-links">
+                <a href="#" onclick="showPage('home')">Home</a>
+                <a href="#" onclick="showPage('appointment')">Book Appointment</a>
+                <a href="#" onclick="showPage('report')">Report Issue</a>
+                <a href="#" onclick="showPage('contact')">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="content-area">
+
+        <section id="home" class="page active">
+            <div class="hero">
+                <p class="subtitle">FIXPOINT SERVICES </p>
+                <h1>Welcome to <span>FIXPOINT</span></h1>
+                <p class="description">เว็บไซต์ ไว้ใช้เพื่อส่งงาน วิชา design thinking</p>
+                <div class="hero-btns">
+                    <button type="button" class="btn-primary" onclick="showPage('appointment')">Book Appointment &rarr;</button>
+                    <button type="button" class="btn-secondary" onclick="showPage('report')">Report Issue</button>
+                </div>
+                <div class="hero-btns-footer">
+                    <a href="Roombooking.html" target="_blank" class="btn-coming-soon">coming soon &rarr;</a>
+                </div>
+            </div>
+
+
+            <div class="cards-container">
+                <div class="card" onclick="showPage('appointment')">
+                    <div class="icon">📅</div>
+                    <h3>Book an Appointment</h3>
+                    <p class="th">นัดหมายอาจารย์</p>
+                    <p>Schedule a consultation with your instructor &mdash; online or in person.</p>
+                    <span class="get-started">Get started &rarr;</span>
+                </div>
+                <div class="card" onclick="showPage('report')">
+                    <div class="icon">🔧</div>
+                    <h3>Report an Issue</h3>
+                    <p class="th">แจ้งซ่อมแซม</p>
+                    <p>Submit maintenance or repair requests for campus facilities.</p>
+                    <span class="get-started">Get started &rarr;</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="appointment" class="page">
+            <div class="form-header">
+                <h2>Faculty Consultation &amp; Appointment</h2>
+                <p>meeting with your instructor</p>
+                <div class="stepper">
+                    <div class="step active" id="step1-indicator">1<span>Instructors</span></div>
+                    <div class="step" id="step2-indicator">2<span>Student Info</span></div>
+                    <div class="step" id="step3-indicator">3<span>Details</span></div>
+                    <div class="step" id="step4-indicator">4<span>Date &amp; Time</span></div>
+                </div>
+            </div>
+
+            <form id="appointmentForm" action="https://formspree.io/f/mdalkeok" method="POST">
+                <div class="form-step active" id="step1">
+                    <h3>Select Instructor(s)</h3>
+                    <p class="small">Multiple selections allowed</p>
+                    <div class="instructor-grid">
+                        <label class="instructor-card">
+                            <input type="checkbox" name="instructor_1" value="Dr. Somchai">
+                            <span class="info"><strong class="block">Dr. Atibodee </strong>Computer Science</span>
+                        </label>
+                        <label class="instructor-card">
+                            <input type="checkbox" name="instructor_2" value="Prof. Ariya">
+                            <span class="info"><strong class="block">Prof.Ya</strong>Mathematics</span>
+                        </label>
+                        <label class="instructor-card">
+                            <input type="checkbox" name="instructor_3" value="Dr. Nattapong">
+                            <span class="info"><strong class="block">Dr. Suppanat</strong>Engineering</span>
+                        </label>
+                    </div>
+                    <div class="form-footer">
+                        <button type="button" class="btn-primary" onclick="nextStep(2)">Continue</button>
+                    </div>
+                </div>
+
+                <div class="form-step" id="step2">
+                    <div class="input-group">
+                        <label for="student_name">Full Name</label>
+                        <input type="text" id="student_name" name="student_name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="student_id">Student ID</label>
+                        <input type="text" id="student_id" name="student_id" placeholder="6xxxxxxxxxxxx" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="Branch">Branch</label>
+                        <input type="text" id="Branch" name="Branch" placeholder="-" required>
+                    </div>
+                    <div class="form-footer">
+                        <button type="button" class="btn-back" onclick="nextStep(1)">Back</button>
+                        <button type="button" class="btn-primary" onclick="nextStep(3)">Continue</button>
+                    </div>
+                </div>
+
+                <div class="form-step" id="step3">
+                    <div class="input-group">
+                        <label for="subject">Subject / Topic of Consultation</label>
+                        <textarea id="subject" name="subject" placeholder="Describe your consultation topic..."></textarea>
+                    </div>
+                    <div class="radio-group">
+                        <p class="label-style">Meeting Preference</p>
+                        <div class="radios">
+                            <label>
+                                <input type="radio" name="mode" value="Online" checked> Online Meeting</label>
+                            <label>
+                                <input type="radio" name="mode" value="On-site"> On-site</label>
+                        </div>
+                    </div>
+                    <div class="form-footer">
+                        <button type="button" class="btn-back" onclick="nextStep(2)">Back</button>
+                        <button type="button" class="btn-primary" onclick="nextStep(4)">Continue</button>
+                    </div>
+                </div>
+
+                <div class="form-step" id="step4">
+                    <div class="input-group">
+                        <label for="app_date">Select Date</label>
+                        <input type="date" id="app_date" name="date" required>
+                    </div>
+                    <div class="form-group">
+                    <label>เลือกวันและเวลาที่สะดวก</label>
+                    <div class="calendar-controls">
+                        <select id="calendar-month" onchange="generateCalendar()"></select>
+                        <select id="calendar-year" onchange="generateCalendar()"></select>
+                    </div>
+                    <table class="calendar-table">
+                        <thead>
+                            <tr>
+                                <th>อา</th><th>จ</th><th>อ</th><th>พ</th><th>พฤ</th><th>ศ</th><th>ส</th>
+                            </tr>
+                        </thead>
+                        <tbody id="calendar-body"></tbody>
+                    </table>
+                </div>
+
+                <div id="time-slot-section" style="display:none;">
+                    <label id="selected-date-label"></label>
+                    <div id="time-slots" class="time-grid"></div>
+                </div>
+
+                <input type="hidden" name="เวลาที่นัดหมาย" id="selected-time">
+
+
+                    <div class="input-group">
+                        <label for="app_time">Choose a time</label>
+                        <select id="app_time" name="time" required>
+                            <option value="09:00">09:00</option>
+                            <option value="10:00">10:00</option>
+                            <option value="13:00">13:00</option>
+                            <option value="16:00">16:00</option>
+                        </select>
+                    </div>
+                    <div class="form-footer">
+                        <button type="button" class="btn-back" onclick="nextStep(3)">Back</button>
+                        <button type="submit" class="btn-primary">Confirm Appointment</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <section id="report" class="page">
+            <div class="form-header">
+                <h2>Maintenance &amp; Repair Request</h2>
+                <p>Report facility issues for prompt resolution</p>
+            </div>
+            <form class="standard-form" action="https://formspree.io/f/mdalkeok" method="POST">
+                <div class="input-group">
+                    <label for="loc">Location / Building / Room Number</label>
+                    <input type="text" id="loc" name="location" placeholder="Location" required>
+                </div>
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="m_name">Full Name</label>
+                        <input type="text" id="m_name" name="name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="m_sid">Student ID</label>
+                        <input type="text" id="m_sid" name="sid" placeholder="6************" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="det">Details of Damage or Problem</label>
+                    <textarea id="det" name="details" placeholder="Please describe the issue in detail..." required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Submit Request</button>
+            </form>
+        </section>
+         <section id="contact" class="page">
+            <div class="form-header">
+                <h2>MEMBERS OF THIS PROJECT GROUP</h2>
+                <p>FIXPOINT</p>
+                <h5>DEVELOPER     : นาย ภูวณัฏฐ์ ยกฉวี      6712022611171 IEAT  </h5>
+                <h5>EXAMINER     : นาย อธิบดี หัสกุลณี      6712022611121 IEAT  </h5>
+                <h5>SECURITY      : นาย ศุภณัฐ วสุธารัฐ     6712022611066 IEAT  </h5>
+                <h5>SOLFWARE EN   : นาย ณัฐภัทร วงศ์ภักดี    6712022611252 IEAT  </h5>
+                <h5>DESIGNER : นาย พลลภัตม์ พัฒนาภรณ์  6712022611236 IEAT  </h5>
+            </div>
+         </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

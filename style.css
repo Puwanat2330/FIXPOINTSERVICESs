@@ -1,0 +1,332 @@
+:root {
+    --primary: #c5a059;       /* สีทองหลัก */
+    --primary-light: #f4eee0; /* สีครีมอ่อนสำหรับ Hover/Active */
+    --bg-page: #f9f8f6;      /* สีพื้นหลังนวลๆ ตามรูป */
+    --white: #ffffff;
+    --text-main: #2d2d2d;
+    --text-muted: #717171;
+    --border-color: #e8e2d5;
+    --shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+}
+
+body {
+    font-family: 'Inter', 'Sarabun', sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-main);
+}
+
+/* Container ของหน้าฟอร์ม */
+form, .standard-form {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 16px; /* ขอบมนมากขึ้น */
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+/* หัวข้อหน้าฟอร์ม */
+.form-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+    color: #1a1a1a;
+}
+.form-header h5 {
+    font-family: 'Inter', 'Roboto', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 5px;
+    color: #1a1a1a;
+}
+
+/* Stepper (วงกลมขั้นตอน) */
+.stepper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 30px 0 40px;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.75rem;
+    color: #b5b5b5;
+    position: relative;
+}
+
+.step::before { /* ตัวเลขในวงกลม */
+    content: attr(data-step);
+    width: 32px;
+    height: 32px;
+    border: 2px solid #e0e0e0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.step.active { color: var(--primary); }
+.step.active::before {
+    border-color: var(--primary);
+    background: var(--primary);
+    color: white;
+}
+
+/* Instructor Card */
+.instructor-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.instructor-card {
+    border: 1px solid #eee;
+    padding: 18px;
+    border-radius: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.instructor-card:hover {
+    border-color: var(--primary);
+    background-color: var(--primary-light);
+}
+
+.instructor-card input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary);
+    margin-top: 3px;
+}
+
+.instructor-card .info strong {
+    display: block;
+    font-size: 0.95rem;
+    margin-bottom: 2px;
+}
+
+.instructor-card .info {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* Input Fields */
+.input-group label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: block;
+}
+
+input[type="text"], input[type="date"], textarea, select {
+    background-color: #fdfcf9;
+    border: 1px solid #efeee9;
+    padding: 14px 16px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: 0.3s;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background-color: var(--white);
+}
+
+/* Buttons */
+.btn-primary, .btn-submit, .btn-secondary:hover,.btn-back {
+    background-color: #e5d5b7; 
+    color: #8a6d3b;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-primary:hover, .btn-submit:hover ,.btn-secondary:hover,.btn-back {
+    background-color: #d8c49d;
+}
+
+.btn-back {
+    background: #d8c49d;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-weight: 500;
+}
+
+/* Success State */
+.success-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    margin: 0 auto 20px;
+}
+:root {
+    --primary: #c5a059;
+    --primary-light: #fdfaf3;
+    --text-dark: #333;
+    --text-gray: #666;
+    --bg-nude: #f9f7f2;
+    --white: #ffffff;
+    --border: #e8e2d5;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-nude);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* Navigation */
+nav {
+    background: var(--white);
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0; z-index: 100;
+}
+
+.nav-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--primary);
+    cursor: pointer;
+}
+
+.logo span { color: #8a6d3b; }
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-gray);
+    margin-left: 2rem;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+
+.hero-btns-footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* เพื่อให้ปุ่มขึ้นบรรทัดใหม่ได้ถ้าจอเล็ก */
+    gap: 15px;       /* <--- เพิ่มบรรทัดนี้เพื่อขยับปุ่มซ้าย-ขวาให้ห่างกัน */
+    margin-bottom: 20px; 
+}
+.btn-coming-soon {
+    display: inline-block;
+    padding: 11px 22px;
+    background-color: #e5d5b7;  /* สีเทาเข้ม */
+    color: #8a6d3b;
+    text-decoration: none;     /* ลบเส้นใต้ลิงก์ */
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 300;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+}
+.btn-coming-soon:hover {
+    background-color: #d8c49d;
+    transform: translateY(-2px); /* เอฟเฟกต์ลอยขึ้นเมื่อชี้ */
+}
+
+
+.instructor-card .info { display: block; }
+.block { display: block; }
+
+.nav-links a:hover { color: var(--primary); }
+
+/* Pages */
+.page { display: none; max-width: 1100px; margin: 4rem auto; padding: 0 20px; animation: fadeIn 0.5s; }
+.page.active { display: block; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Home Section */
+.hero { text-align: center; margin-bottom: 4rem; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; margin-bottom: 1rem; }
+.hero h1 span { color: var(--primary); }
+.subtitle { color: var(--primary); letter-spacing: 2px; font-weight: 600; font-size: 0.9rem; }
+.description { color: var(--text-gray); font-size: 1.1rem; max-width: 600px; margin: 0 auto 2rem; }
+
+.btn-primary { background: var(--primary); color: white; border: none; padding: 0.8rem 1.8rem; border-radius: 6px; cursor: pointer; font-size: 1rem; transition: 0.3s; }
+.btn-primary:hover { background: #ab8a4a; transform: translateY(-2px); }
+
+.btn-secondary{background: var(--primary); color: white; border: none; padding: 0.8rem 1.8rem; border-radius: 6px; cursor: pointer; font-size: 1rem; transition: 0.3s; }
+.btn-secondary:hover { background: #ab8a4a; transform: translateY(-2px); }
+
+.btn-back{background: var(--primary); color: white; border: none; padding: 0.8rem 1.8rem; border-radius: 6px; cursor: pointer; font-size: 1rem; transition: 0.3s; }
+.btn-back:hover { background: #ab8a4a; transform: translateY(-2px); }
+
+.cards-container { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.card { background: var(--white); padding: 2.5rem; border-radius: 12px; border: 1px solid var(--border); cursor: pointer; transition: 0.3s; }
+.card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+.card .icon { font-size: 2rem; margin-bottom: 1rem; background: var(--primary-light); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 8px; }
+
+/* Forms & Stepper */
+.form-header { text-align: center; margin-bottom: 3rem; }
+.stepper { display: flex; justify-content: center; gap: 3rem; margin-top: 2rem; }
+.step { color: #ccc; position: relative; font-weight: 600; }
+.step.active { color: var(--primary); }
+.step span { display: block; font-size: 0.7rem; text-transform: uppercase; margin-top: 5px; }
+
+form { background: var(--white); padding: 2.5rem; border-radius: 12px; border: 1px solid var(--border); max-width: 700px; margin: 0 auto; }
+.form-step { display: none; }
+.form-step.active { display: block; }
+
+.input-group { margin-bottom: 1.5rem; }
+.input-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
+input, textarea, select { width: 100%; padding: 0.8rem; border: 1px solid var(--border); border-radius: 6px; background: #fcfcfc; }
+
+.instructor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+.instructor-card { border: 1px solid var(--border); padding: 1rem; border-radius: 8px; display: flex; gap: 10px; cursor: pointer; }
+.instructor-card:has(input:checked) { border-color: var(--primary); background: var(--primary-light); }
+
+.btn-submit { width: 100%; background: #e3d5b8; color: #8a6d3b; border: none; padding: 1rem; border-radius: 6px; font-weight: 600; cursor: pointer; }
+
+.calendar-controls { display: flex; gap: 10px; margin-bottom: 15px; }
+.calendar-table td { cursor: pointer; transition: 0.2s; border-radius: 4px; }
+.calendar-table td:hover:not(.empty) { background: #fdf8f0; color: var(--primary-gold); }
+.calendar-table td.active-day { background: var(--primary-gold) !important; color: white !important; }
+.calendar-table td.empty { background: transparent; cursor: default; border: none; }
+
+/* --- Table/Calendar --- */
+.calendar-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.85rem; }
+.calendar-table th, .calendar-table td { border: 1px solid #f0f0f0; padding: 10px; text-align: center; }
+.calendar-table th { background: #fafafa; font-weight: 400; }
+.time-slot { cursor: pointer; transition: 0.2s; }
+.time-slot:hover { background: #fdf8f0; color: var(--primary-gold); }
+.time-slot.selected { background: var(--primary-gold); color: white; }
+.time-slot.booked { background: #eee; color: #ccc; cursor: not-allowed; }
