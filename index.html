@@ -16,6 +16,7 @@
                 <a href="#" onclick="showPage('home')">Home</a>
                 <a href="#" onclick="showPage('appointment')">Book Appointment</a>
                 <a href="#" onclick="showPage('report')">Report Issue</a>
+                <a href="#" onclick="showPage('Test')">Awaiting Approval</a>
                 <a href="#" onclick="showPage('contact')">Contact</a>
             </div>
         </div>
@@ -74,15 +75,15 @@
                     <p class="small">Multiple selections allowed</p>
                     <div class="instructor-grid">
                         <label class="instructor-card">
-                            <input type="checkbox" name="instructor_1" value="Dr.Atibodee">
+                            <input type="checkbox" name="instructor_1" value="Dr. Somchai">
                             <span class="info"><strong class="block">Dr. Atibodee </strong>Computer Science</span>
                         </label>
                         <label class="instructor-card">
-                            <input type="checkbox" name="instructor_2" value="Prof. Ya">
+                            <input type="checkbox" name="instructor_2" value="Prof. Ariya">
                             <span class="info"><strong class="block">Prof.Ya</strong>Mathematics</span>
                         </label>
                         <label class="instructor-card">
-                            <input type="checkbox" name="instructor_3" value="Dr. Suppanat">
+                            <input type="checkbox" name="instructor_3" value="Dr. Nattapong">
                             <span class="info"><strong class="block">Dr. Suppanat</strong>Engineering</span>
                         </label>
                     </div>
@@ -101,13 +102,13 @@
                         <input type="text" id="student_id" name="student_id" placeholder="6xxxxxxxxxxxx" required>
                     </div>
                     <div class="input-group">
-                        <label for="Branch">Branch</label>
-                        <input type="text" id="Branch" name="Branch" placeholder="-" required>
-                    </div>
-                    <div class="input-group">
                     <label>Email </label>
                     <input type="text" name="email" placeholder="xxxxx@mail.xxx" required>
                      </div>
+                    <div class="input-group">
+                        <label for="Branch">Branch</label>
+                        <input type="text" id="Branch" name="Branch" placeholder="-" required>
+                    </div>
                     <div class="form-footer">
                         <button type="button" class="btn-back" onclick="nextStep(1)">Back</button>
                         <button type="button" class="btn-primary" onclick="nextStep(3)">Continue</button>
@@ -123,7 +124,7 @@
                         <p class="label-style">Meeting Preference</p>
                         <div class="radios">
                             <label>
-                                <input type="radio" name="mode" value="Online" checked> Online </label>
+                                <input type="radio" name="mode" value="Online" checked> Online</label>
                             <label>
                                 <input type="radio" name="mode" value="On-site"> On-site</label>
                         </div>
@@ -180,6 +181,7 @@
             </form>
         </section>
 
+
         <section id="report" class="page">
             <div class="form-header">
                 <h2>Maintenance &amp; Repair Request</h2>
@@ -207,6 +209,433 @@
                 <button type="submit" class="btn-submit">Submit Request</button>
             </form>
         </section>
+        <section id="Test" class="page">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixpoint Med </title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;700&family=Playfair+Display:wght@700&display=swap');
+        
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: #faf9f6; /* Off-white luxury background */
+            color: #000000;
+        }
+
+        .brand-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .gold-bg {
+            background-color: #c5a059;
+        }
+
+        .gold-gradient {
+            background: linear-gradient(135deg, #c5a059 0%, #e2c285 50%, #a88541 100%);
+        }
+
+        .gold-text {
+            color: #c5a059;
+        }
+
+        .luxury-shadow {
+            box-shadow: 0 10px 30px -10px rgba(197, 160, 89, 0.2);
+        }
+
+        /* Custom scrollbar for drug list */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 5px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #fdfbf7;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c5a059;
+            border-radius: 10px;
+        }
+
+        .input-focus:focus {
+            border-color: #c5a059;
+            box-shadow: 0 0 0 2px rgba(197, 160, 89, 0.1);
+        }
+
+        /* Override for black text emphasis */
+        .text-black-custom {
+            color: #000000 !important;
+        }
+    </style>
+</head>
+<body class="pb-10">
+
+    <!-- App Header -->
+    <header class="gold-bg text-black p-6 shadow-lg sticky top-0 z-50">
+        <div class="max-w-md mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="bg-black/10 p-2 rounded-lg backdrop-blur-md border border-black/10">
+                    <i data-lucide="sparkles" class="w-6 h-6 text-black"></i>
+                </div>
+                <h1 class="text-2xl font-bold brand-font tracking-tight">Fixpoint CareNote</h1>
+            </div>
+            <div class="text-[9px] bg-black/10 px-3 py-1 rounded-full border border-black/10 uppercase font-bold tracking-[0.1em] backdrop-blur-sm">
+                FIXPOINT
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-md mx-auto px-5 mt-8">
+        <!-- Tab Navigation -->
+        <div class="flex bg-white rounded-2xl p-1.5 mb-8 luxury-shadow border border-[#c5a059]/20">
+            <button id="tab-oral" onclick="switchTab('oral')" class="flex-1 py-3 rounded-xl text-sm font-bold transition-all gold-bg text-black shadow-md">
+                ยารับประทาน
+            </button>
+            <button id="tab-iv" onclick="switchTab('iv')" class="flex-1 py-3 rounded-xl text-sm font-bold transition-all text-black/40">
+                ยาฉีด (IV)
+            </button>
+        </div>
+
+        <!-- ORAL SECTION -->
+        <section id="section-oral" class="space-y-6">
+            <div class="bg-white p-6 rounded-3xl luxury-shadow border border-[#c5a059]/10">
+                <label class="text-[10px] font-bold text-black/60 uppercase mb-3 block tracking-[0.15em]">ค้นหาชื่อยาเลอค่า (A-Z)</label>
+                <div class="relative mb-6">
+                    <!-- Removed Search Icon as requested -->
+                    <input type="text" id="drug-search" onfocus="toggleDrugList(true)" oninput="filterDrugs()" 
+                        class="w-full px-5 py-4 bg-[#c5a059]/5 border border-[#c5a059]/20 rounded-2xl outline-none input-focus font-medium transition-all placeholder:text-[#c5a059]/40 text-black" 
+                        placeholder="พิมพ์ชื่อยาเพื่อค้นหา...">
+                    
+                    <!-- Dropdown Drug List -->
+                    <div id="drug-dropdown" class="hidden absolute z-40 w-full mt-2 bg-white border border-[#c5a059]/20 rounded-2xl shadow-2xl max-h-60 overflow-y-auto custom-scrollbar">
+                        <!-- List items injected here -->
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-5 mb-6">
+                    <div>
+                        <label class="text-[10px] font-bold text-black/60 uppercase mb-2 block tracking-wider">นน. ตัว (kg)</label>
+                        <input type="number" id="oral-weight" class="w-full p-4 bg-[#c5a059]/5 border border-[#c5a059]/20 rounded-2xl outline-none font-bold input-focus text-black" placeholder="0.0">
+                    </div>
+                    <div>
+                        <label class="text-[10px] font-bold text-black/60 uppercase mb-2 block tracking-wider">หน่วยโดสยา</label>
+                        <div class="flex bg-[#c5a059]/10 rounded-2xl p-1 h-[58px]">
+                            <button id="unit-mgkg" onclick="setDoseUnit('mg/kg')" class="flex-1 rounded-xl text-[11px] font-bold bg-white text-black shadow-sm transition-all border border-[#c5a059]/20">mg/kg</button>
+                            <button id="unit-mg" onclick="setDoseUnit('mg')" class="flex-1 rounded-xl text-[11px] font-bold text-[#c5a059] transition-all">mg</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-5 mb-8">
+                    <div>
+                        <label id="label-dose" class="text-[10px] font-bold text-black/60 uppercase mb-2 block tracking-wider">โดสยา (mg/kg)</label>
+                        <input type="number" id="oral-dose" class="w-full p-4 bg-[#c5a059]/5 border border-[#c5a059]/20 rounded-2xl outline-none font-bold input-focus text-black">
+                    </div>
+                    <div>
+                        <label class="text-[10px] font-bold text-black/60 uppercase mb-2 block tracking-wider">จำนวนครั้ง/วัน</label>
+                        <input type="number" id="oral-freq" class="w-full p-4 bg-[#c5a059]/5 border border-[#c5a059]/20 rounded-2xl outline-none font-bold input-focus text-black" placeholder="เช่น 3">
+                    </div>
+                </div>
+
+                <button onclick="calculateOral()" class="w-full gold-bg hover:opacity-90 text-black font-bold py-5 rounded-2xl shadow-xl transition-all flex items-center justify-center gap-3 active:scale-[0.98]">
+                    <i data-lucide="sparkles" class="w-5 h-5"></i> คำนวณผลลัพธ์
+                </button>
+            </div>
+
+            <!-- Result Display -->
+            <div id="oral-result-container" class="hidden animate-in zoom-in duration-500 space-y-6">
+                <div class="bg-white p-8 rounded-3xl border-2 border-[#c5a059]/30 luxury-shadow text-center relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-5">
+                        <i data-lucide="award" class="w-24 h-24 text-[#c5a059]"></i>
+                    </div>
+                    <p class="text-black font-bold text-[10px] uppercase mb-2 tracking-[0.2em]">ปริมาณที่ทานต่อครั้ง</p>
+                    <p class="text-5xl font-black text-black mb-2"><span id="res-grams">0.0000</span> <span class="text-xl font-bold text-[#c5a059]">G</span></p>
+                    <p class="text-black/60 text-sm font-medium">หรือ <span id="res-mg" class="font-bold text-black">0</span> มิลลิกรัม</p>
+                    <div class="mt-5 py-2 px-6 bg-[#c5a059]/10 text-black rounded-full inline-block font-bold text-xs border border-[#c5a059]/20">
+                        รับประทานวันละ <span id="res-freq">0</span> ครั้ง
+                    </div>
+                </div>
+
+                <div id="drug-info-card" class="hidden bg-black text-white p-6 rounded-3xl shadow-2xl border border-[#c5a059]/30">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-8 rounded-full bg-[#c5a059]/20 flex items-center justify-center border border-[#c5a059]/30">
+                            <i data-lucide="info" class="text-[#c5a059] w-4 h-4"></i>
+                        </div>
+                        <h3 class="font-bold text-sm brand-font text-[#c5a059]" id="info-name">Product Information</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <p class="text-[#c5a059] text-[9px] font-bold uppercase mb-1 tracking-widest opacity-80">สรรพคุณหลัก</p>
+                            <p class="text-xs leading-relaxed text-white/90" id="info-props">-</p>
+                        </div>
+                        <div class="p-4 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm">
+                            <p class="text-rose-400 text-[9px] font-bold uppercase mb-1 tracking-widest">Medical Caution</p>
+                            <p class="text-[11px] leading-relaxed italic text-rose-100/80" id="info-warning">-</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- IV SECTION -->
+        <section id="section-iv" class="hidden space-y-6">
+            <div class="bg-white p-6 rounded-3xl luxury-shadow border border-[#c5a059]/10 space-y-6">
+                <h2 class="text-xl font-bold brand-font text-black flex items-center gap-3">
+                    <i data-lucide="droplets" class="text-[#c5a059] w-6 h-6"></i> IV Infusion Rate
+                </h2>
+                <div class="grid grid-cols-2 gap-5">
+                   <div class="col-span-2">
+                      <label class="text-[10px] font-bold text-black/60 uppercase mb-2 block tracking-wider">น้ำหนักคนไข้ (kg)</label>
+                      <input type="number" id="iv-weight" class="w-full p-4 bg-[#c5a059]/5 border border-[#c5a059]/20 rounded-2xl outline-none font-bold text-black">
+                   </div>
+                   <div>
+                      <label class="text-[10px] font-bold text-black/60 uppercase mb-2 block tracking-tight leading-none">Target<br>(mcg/kg/min)</label>
+                      <input type="number" id="iv-target" class="w-full p-4 bg-[#c5a059]/5 border border-[#c5a059]/20 rounded-2xl outline-none font-bold mt-2 text-black">
+                   </div>
+                   <div>
+                      <label class="text-[10px] font-bold text-black/60 uppercase mb-2 block tracking-tight leading-none">ตัวยา<br>(mg)</label>
+                      <input type="number" id="iv-drug" class="w-full p-4 bg-[#c5a059]/5 border border-[#c5a059]/20 rounded-2xl outline-none font-bold mt-2 text-black">
+                   </div>
+                   <div class="col-span-2">
+                      <label class="text-[10px] font-bold text-black/60 uppercase mb-2 block tracking-wider">ปริมาณสารละลาย (ml)</label>
+                      <input type="number" id="iv-vol" class="w-full p-4 bg-[#c5a059]/5 border border-[#c5a059]/20 rounded-2xl outline-none font-bold text-black">
+                   </div>
+                </div>
+                <button onclick="calculateIV()" class="w-full gold-bg text-black font-bold py-5 rounded-2xl shadow-xl mt-2 active:scale-[0.98]">คำนวณอัตราไหล</button>
+                
+                <div id="iv-result-container" class="hidden mt-4 p-8 bg-black rounded-3xl text-center border border-[#c5a059]/30 shadow-2xl animate-in slide-in-from-bottom-4">
+                    <p class="text-[#c5a059] font-bold text-[10px] uppercase mb-2 tracking-[0.2em]">Infusion Pump Setting</p>
+                    <p class="text-5xl font-black text-white"><span id="iv-res-rate">0.00</span> <span class="text-xl font-medium text-[#c5a059]">ml/hr</span></p>
+                    <div class="mt-6 pt-5 border-t border-white/5 text-[10px] text-[#c5a059]/60 font-bold uppercase tracking-widest">
+                        Concentration: <span id="iv-res-conc" class="text-[#c5a059]">0</span> mcg/ml
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- History Area -->
+        <section class="mt-12 mb-8">
+            <div class="flex items-center justify-between mb-5 px-1">
+                <h3 class="text-black font-bold text-sm flex items-center gap-2 brand-font">
+                    <i data-lucide="archive" class="w-4 h-4 text-[#c5a059]"></i> บันทึกรายการล่าสุด
+                </h3>
+                <button onclick="clearHistory()" class="text-rose-600 text-[10px] font-bold flex items-center gap-1.5 opacity-60 hover:opacity-100 transition-opacity uppercase tracking-widest">
+                    <i data-lucide="trash-2" class="w-3 h-3"></i> ล้างข้อมูล
+                </button>
+            </div>
+            <div id="history-list" class="space-y-3">
+                <!-- History items injected here -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center text-[10px] text-black/40 mt-10 leading-relaxed px-10">
+        <p class="font-bold brand-font mb-1 text-black/60">FIXPOINT MED • PREMIER SYSTEM</p>
+        <p>Medical verification is mandatory before every clinical application.</p>
+    </footer>
+
+    <script>
+        // Database
+        const DRUG_DATABASE = [
+            { name: "Acyclovir", standardDose: 20, properties: "ยาต้านไวรัส ใช้รักษาโรคเริม งูสวัด", warning: "ควรดื่มน้ำตามมากๆ เพื่อป้องกันผลข้างเคียงต่อไต" },
+            { name: "Albendazole", standardDose: 15, properties: "ยาถ่ายพยาธิ ครอบคลุมพยาธิหลายชนิด", warning: "ห้ามใช้ในหญิงตั้งครรภ์" },
+            { name: "Amoxicillin", standardDose: 25, properties: "ยาปฏิชีวนะกลุ่ม Penicillin รักษาการติดเชื้อแบคทีเรีย", warning: "ระวังในผู้ที่มีประวัติแพ้ยากลุ่ม Penicillin" },
+            { name: "Azithromycin", standardDose: 10, properties: "ยาปฏิชีวนะกลุ่ม Macrolide ใช้รักษาการติดเชื้อในทางเดินหายใจ", warning: "รับประทานก่อนอาหาร 1 ชม. หรือหลังอาหาร 2 ชม." },
+            { name: "Bromhexine", standardDose: 0.3, properties: "ยาละลายเสมหะ ช่วยขับเสมหะ", warning: "ระวังในผู้ป่วยที่มีประวัติแผลในกระเพาะอาหาร" },
+            { name: "Cetirizine", standardDose: 0.25, properties: "ยาแก้แพ้ รุ่นที่ 2 ไม่ทำให้ง่วงนอนมากนัก", warning: "ระวังการใช้ร่วมกับแอลกอฮอล์" },
+            { name: "Chlorpheniramine (CPM)", standardDose: 0.1, properties: "ยาแก้แพ้ ลดน้ำมูก", warning: "ทำให้ง่วงนอนมาก หลีกเลี่ยงการขับรถ" },
+            { name: "Dicloxacillin", standardDose: 12.5, properties: "ยาปฏิชีวนะรักษาการติดเชื้อที่ผิวหนัง", warning: "ต้องทานตอนท้องว่างเท่านั้น" },
+            { name: "Domperidone", standardDose: 0.25, properties: "ยาแก้คลื่นไส้ อาเจียน", warning: "รับประทานก่อนอาหาร 15-30 นาที" },
+            { name: "Erythromycin", standardDose: 10, properties: "ยาปฏิชีวนะสำหรับผู้แพ้ Penicillin", warning: "อาจทำให้ปวดท้องหรือคลื่นไส้ได้บ่อย" },
+            { name: "Furosemide", standardDose: 1, properties: "ยาขับปัสสาวะ ลดอาการบวม", warning: "ระวังภาวะโพแทสเซียมในเลือดต่ำ" },
+            { name: "Ibuprofen", standardDose: 10, properties: "ยาแก้ปวด ลดการอักเสบ ลดไข้สูง", warning: "ห้ามใช้ในผู้ป่วยสงสัยไข้เลือดออก และต้องทานหลังอาหารทันที" },
+            { name: "Loratadine", standardDose: 0.2, properties: "ยาแก้แพ้ กลุ่มที่ไม่ทำให้ง่วง", warning: "ใช้เพียงวันละ 1 ครั้ง" },
+            { name: "Paracetamol", standardDose: 10, properties: "ยาลดไข้ แก้ปวดมาตรฐาน", warning: "ห้ามทานเกิน 15 mg/kg ต่อครั้ง และไม่เกิน 5 ครั้งต่อวัน" },
+            { name: "Prednisolone", standardDose: 1, properties: "ยาสเตียรอยด์ ลดการอักเสบและภูมิแพ้", warning: "ควรทานหลังอาหารทันที ห้ามหยุดยาเองทันที" },
+            { name: "Salbutamol Syrup", standardDose: 0.1, properties: "ยาขยายหลอดลม บรรเทาอาการหอบหืด", warning: "อาจทำให้มีอาการใจสั่น หรือมือสั่นได้" },
+        ].sort((a, b) => a.name.localeCompare(b.name));
+
+        // State Management
+        let currentTab = 'oral';
+        let currentDoseUnit = 'mg/kg';
+        let selectedDrug = null;
+        let history = JSON.parse(localStorage.getItem('fixpointMedHistory')) || [];
+
+        // Initialize
+        window.onload = () => {
+            lucide.createIcons();
+            renderDrugList();
+            renderHistory();
+        };
+
+        // Tab Switching
+        function switchTab(tab) {
+            currentTab = tab;
+            const oralBtn = document.getElementById('tab-oral');
+            const ivBtn = document.getElementById('tab-iv');
+            const oralSec = document.getElementById('section-oral');
+            const ivSec = document.getElementById('section-iv');
+
+            if (tab === 'oral') {
+                oralBtn.className = "flex-1 py-3 rounded-xl text-sm font-bold transition-all gold-bg text-black shadow-md";
+                ivBtn.className = "flex-1 py-3 rounded-xl text-sm font-bold transition-all text-black/40";
+                oralSec.classList.remove('hidden');
+                ivSec.classList.add('hidden');
+            } else {
+                ivBtn.className = "flex-1 py-3 rounded-xl text-sm font-bold transition-all gold-bg text-black shadow-md";
+                oralBtn.className = "flex-1 py-3 rounded-xl text-sm font-bold transition-all text-black/40";
+                ivSec.classList.remove('hidden');
+                oralSec.classList.add('hidden');
+            }
+        }
+
+        // Dose Unit Switch
+        function setDoseUnit(unit) {
+            currentDoseUnit = unit;
+            const mgkgBtn = document.getElementById('unit-mgkg');
+            const mgBtn = document.getElementById('unit-mg');
+            const labelDose = document.getElementById('label-dose');
+
+            if (unit === 'mg/kg') {
+                mgkgBtn.className = "flex-1 rounded-xl text-[11px] font-bold bg-white text-black shadow-sm transition-all border border-[#c5a059]/20";
+                mgBtn.className = "flex-1 rounded-xl text-[11px] font-bold text-[#c5a059] transition-all";
+                labelDose.innerText = "โดสยา (mg/kg)";
+            } else {
+                mgBtn.className = "flex-1 rounded-xl text-[11px] font-bold bg-white text-black shadow-sm transition-all border border-[#c5a059]/20";
+                mgkgBtn.className = "flex-1 rounded-xl text-[11px] font-bold text-[#c5a059] transition-all";
+                labelDose.innerText = "โดสยา (mg)";
+            }
+        }
+
+        // Drug Selection Logic
+        function toggleDrugList(show) {
+            const dropdown = document.getElementById('drug-dropdown');
+            if (show) dropdown.classList.remove('hidden');
+            else setTimeout(() => dropdown.classList.add('hidden'), 200);
+        }
+
+        function renderDrugList(filter = "") {
+            const container = document.getElementById('drug-dropdown');
+            const filtered = DRUG_DATABASE.filter(d => d.name.toLowerCase().includes(filter.toLowerCase()));
+            
+            container.innerHTML = filtered.map(drug => `
+                <div onclick="selectDrug('${drug.name}')" class="p-4 hover:bg-[#c5a059]/5 cursor-pointer flex justify-between items-center border-b border-[#c5a059]/10 transition-colors">
+                    <span class="text-sm font-bold text-black">${drug.name}</span>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-[#c5a059]"></i>
+                </div>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        function filterDrugs() {
+            const val = document.getElementById('drug-search').value;
+            renderDrugList(val);
+        }
+
+        function selectDrug(name) {
+            const drug = DRUG_DATABASE.find(d => d.name === name);
+            if (drug) {
+                selectedDrug = drug;
+                document.getElementById('drug-search').value = drug.name;
+                document.getElementById('oral-dose').value = drug.standardDose;
+                setDoseUnit('mg/kg');
+                toggleDrugList(false);
+            }
+        }
+
+        // Calculation Logic
+        function calculateOral() {
+            const weight = parseFloat(document.getElementById('oral-weight').value);
+            const dose = parseFloat(document.getElementById('oral-dose').value);
+            const freq = parseInt(document.getElementById('oral-freq').value);
+
+            if (!dose || !freq) return;
+            if (currentDoseUnit === 'mg/kg' && (!weight || weight <= 0)) return;
+
+            const totalMg = currentDoseUnit === 'mg/kg' ? (weight * dose) : dose;
+            const totalGrams = totalMg / 1000;
+
+            // Update UI
+            document.getElementById('res-grams').innerText = totalGrams.toFixed(4);
+            document.getElementById('res-mg').innerText = totalMg.toLocaleString();
+            document.getElementById('res-freq').innerText = freq;
+            document.getElementById('oral-result-container').classList.remove('hidden');
+
+            if (selectedDrug) {
+                document.getElementById('info-name').innerText = selectedDrug.name;
+                document.getElementById('info-props').innerText = selectedDrug.properties;
+                document.getElementById('info-warning').innerText = selectedDrug.warning;
+                document.getElementById('drug-info-card').classList.remove('hidden');
+            } else {
+                document.getElementById('drug-info-card').classList.add('hidden');
+            }
+
+            addToHistory('ยารับประทาน', `${selectedDrug?.name || 'ทั่วไป'}: ${totalMg.toFixed(1)} mg x ${freq}`);
+        }
+
+        function calculateIV() {
+            const weight = parseFloat(document.getElementById('iv-weight').value);
+            const target = parseFloat(document.getElementById('iv-target').value);
+            const drug = parseFloat(document.getElementById('iv-drug').value);
+            const vol = parseFloat(document.getElementById('iv-vol').value);
+
+            if (!weight || !target || !drug || !vol) return;
+
+            const concentrationMcgMl = (drug * 1000) / vol;
+            const rateMlHr = (target * weight * 60) / concentrationMcgMl;
+
+            document.getElementById('iv-res-rate').innerText = rateMlHr.toFixed(2);
+            document.getElementById('iv-res-conc').innerText = Math.round(concentrationMcgMl);
+            document.getElementById('iv-result-container').classList.remove('hidden');
+
+            addToHistory('ยาฉีด', `Dose: ${target} mcg | Rate: ${rateMlHr.toFixed(2)} ml/hr`);
+        }
+
+        // History Management
+        function addToHistory(type, text) {
+            const entry = {
+                id: Date.now(),
+                type,
+                text,
+                date: new Date().toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' })
+            };
+            history.unshift(entry);
+            history = history.slice(0, 10);
+            localStorage.setItem('fixpointMedHistory', JSON.stringify(history));
+            renderHistory();
+        }
+
+        function renderHistory() {
+            const container = document.getElementById('history-list');
+            if (history.length === 0) {
+                container.innerHTML = `<div class="text-center p-8 bg-[#c5a059]/5 rounded-3xl border-2 border-dashed border-[#c5a059]/20 text-[#c5a059] text-[10px] font-bold uppercase tracking-widest">No Records Found</div>`;
+                return;
+            }
+
+            container.innerHTML = history.map(h => `
+                <div class="bg-white p-4 rounded-2xl luxury-shadow border border-[#c5a059]/10 flex items-center gap-4 animate-in fade-in slide-in-from-left-4">
+                    <div class="p-2.5 rounded-xl ${h.type === 'ยารับประทาน' ? 'bg-[#c5a059]/10 text-[#c5a059]' : 'bg-slate-50 text-slate-500'}">
+                        <i data-lucide="${h.type === 'ยารับประทาน' ? 'pill' : 'droplet'}" class="w-4 h-4"></i>
+                    </div>
+                    <div class="flex-1">
+                        <p class="text-xs font-bold text-black leading-none">${h.text}</p>
+                        <p class="text-[8px] text-black/40 font-bold uppercase mt-1.5 tracking-wider">${h.date} • ${h.type}</p>
+                    </div>
+                </div>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        function clearHistory() {
+            history = [];
+            localStorage.setItem('fixpointMedHistory', JSON.stringify(history));
+            renderHistory();
+        }
+    </script>
+</body>
+        </section>
          <section id="contact" class="page">
             <div class="form-header">
                 <h2>MEMBERS OF THIS PROJECT GROUP</h2>
@@ -214,7 +643,7 @@
                 <h5>DEVELOPER     : นาย ภูวณัฏฐ์ ยกฉวี      6712022611171 IEAT  </h5>
                 <h5>EXAMINER     : นาย อธิบดี หัสกุลณี      6712022611121 IEAT  </h5>
                 <h5>SECURITY      : นาย ศุภณัฐ วสุธารัฐ     6712022611066 IEAT  </h5>
-                <h5>SOFTWARE EN   : นาย ณัฐภัทร วงศ์ภักดี    6712022611252 IEAT  </h5>
+                <h5>SOLFWARE EN   : นาย ณัฐภัทร วงศ์ภักดี    6712022611252 IEAT  </h5>
                 <h5>DESIGNER : นาย พลลภัตม์ พัฒนาภรณ์  6712022611236 IEAT  </h5>
             </div>
          </section>
